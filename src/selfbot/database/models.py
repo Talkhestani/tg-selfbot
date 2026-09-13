@@ -202,3 +202,12 @@ __all__ = [
     "StopwatchState",
     "TimerJob",
 ]
+
+class MessageBackup(Base):
+    __tablename__ = "message_backups"
+    id: Mapped[int] = mapped_column(Integer, primary_key=True, autoincrement=True)
+    message_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    chat_id: Mapped[int] = mapped_column(Integer, nullable=False)
+    text: Mapped[str] = mapped_column(Text, default="")
+    created_at: Mapped[datetime] = mapped_column(DateTime, default=utcnow)
+    seen: Mapped[bool] = mapped_column(Boolean, default=False)

@@ -31,7 +31,12 @@ dependencies = [
     "python-whois>=0.9",
     "pypng>=0.20220715",
     "tzdata>=2024.1",
+    "typer>=0.12",
+    "python-socks>=2.0",
 ]
+
+[project.scripts]
+selfbot = "selfbot.cli:app"
 
 [project.optional-dependencies]
 dev = [

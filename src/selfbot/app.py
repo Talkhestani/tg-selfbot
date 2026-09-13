@@ -14,6 +14,7 @@ from selfbot.database.models import Base
 from selfbot.services_container import Services
 from selfbot.telegram.client import TelegramClient, authenticate, build_client
 from selfbot.telegram.handlers import register_all
+from selfbot.telegram.handlers import message_backup_handler
 from selfbot.utils.logging_cfg import setup_logging
 
 logger = logging.getLogger(__name__)
@@ -59,8 +60,33 @@ class Application:
         self.services = services
 
         register_all(services.dispatcher, services)
+        message_backup_handler.register(client, settings, database)
 
         await authenticate(client, settings)
+
+        # Auto-write owner ID to .env if missing so commands respond
+        if not settings.owner_id:
+            try:
+                me = await client.get_me()
+                if me.id:
+                    from pathlib import Path
+                    env_path = Path(".env")
+                    lines = env_path.read_text(encoding="utf-8").splitlines() if env_path.exists() else []
+                    new_lines = []
+                    set_owner = False
+                    for line in lines:
+                        if line.startswith("OWNER_ID="):
+                            new_lines.append(f"OWNER_ID={me.id}")
+                            set_owner = True
+                        else:
+                            new_lines.append(line)
+                    if not set_owner:
+                        new_lines.append(f"OWNER_ID={me.id}")
+                    env_path.write_text("\n".join(new_lines) + "\n", encoding="utf-8")
+                    settings.owner_id = me.id
+                    logger.info("owner_id set to %s in .env", me.id)
+            except Exception:
+                logger.exception("failed to auto-set owner_id")
 
         # Start periodic subsystems.
         await services.dispatcher.start()

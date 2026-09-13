@@ -116,6 +116,9 @@ class Settings(BaseSettings):
             "ai=configured" if self.ai_configured else "ai=disabled",
         )
 
+    message_backup_enabled: bool = False
+    message_backup_remove_on_seen: bool = True
+
     def __str__(self) -> str:
         return ", ".join(self.secret_summary())
 

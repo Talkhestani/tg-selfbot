@@ -44,15 +44,17 @@ async def capture_screenshot(url: str, output: Path) -> Path:
     try:
         async with async_playwright() as playwright:
             browser = await playwright.chromium.launch()
-            page = await browser.new_page(
-                viewport={"width": VIEWPORT_WIDTH, "height": VIEWPORT_HEIGHT}
-            )
             try:
-                await page.goto(url, timeout=SCREENSHOT_TIMEOUT_MS, wait_until="networkidle")
-            except Exception as exc:  # noqa: BLE001 - page errors surface as screenshot failures
-                raise ScreenshotError(f"بارگذاری صفحه انجام نشد: {exc.__class__.__name__}") from exc
-            await page.screenshot(path=str(output), full_page=False)
-            await browser.close()
+                page = await browser.new_page(
+                    viewport={"width": VIEWPORT_WIDTH, "height": VIEWPORT_HEIGHT}
+                )
+                try:
+                    await page.goto(url, timeout=SCREENSHOT_TIMEOUT_MS, wait_until="networkidle")
+                except Exception as exc:  # noqa: BLE001 - page errors surface as screenshot failures
+                    raise ScreenshotError(f"بارگذاری صفحه انجام نشد: {exc.__class__.__name__}") from exc
+                await page.screenshot(path=str(output), full_page=False)
+            finally:
+                await browser.close()
     except PlaywrightNotInstalledError:
         raise
     except ScreenshotError:

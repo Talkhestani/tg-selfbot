@@ -7,6 +7,8 @@ import logging
 from telethon import TelegramClient
 from telethon.sessions import StringSession
 
+from selfbot.proxy import first_proxy_dict
+
 logger = logging.getLogger(__name__)
 
 
@@ -28,7 +30,10 @@ def build_client(settings) -> TelegramClient:  # type: ignore[no-untyped-def]
     else:
         session = settings.session_name
 
-    client = TelegramClient(session, settings.api_id, settings.api_hash)
+    proxy = first_proxy_dict()
+    client = TelegramClient(
+        session, settings.api_id, settings.api_hash, proxy=proxy
+    )
     client.flood_sleep_threshold = 60
     return client
 

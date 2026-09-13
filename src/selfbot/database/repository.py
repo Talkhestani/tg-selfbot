@@ -286,3 +286,23 @@ class DownloadJobRepository:
             values["file_path"] = file_path
         await self.session.execute(update(DownloadJob).where(DownloadJob.id == job_id).values(**values))
         await self.session.commit()
+
+class MessageBackupRepository:
+    def __init__(self, session: AsyncSession) -> None:
+        self.session = session
+
+    async def save(self, msg_id: int, chat_id: int, text: str) -> None:
+        from selfbot.database.models import MessageBackup
+        self.session.add(MessageBackup(message_id=msg_id, chat_id=chat_id, text=text))
+        await self.session.commit()
+
+    async def delete_by_chat_max(self, chat_id: int, max_id: int) -> int:
+        from selfbot.database.models import MessageBackup
+        from sqlalchemy import delete
+        stmt = delete(MessageBackup).where(
+            MessageBackup.chat_id == chat_id,
+            MessageBackup.message_id <= max_id
+        )
+        res = await self.session.execute(stmt)
+        await self.session.commit()
+        return res.rowcount
