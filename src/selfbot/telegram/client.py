@@ -30,7 +30,7 @@ def build_client(settings) -> TelegramClient:  # type: ignore[no-untyped-def]
     else:
         session = settings.session_name
 
-    proxy = first_proxy_dict()
+    proxy = first_proxy_dict() if settings.proxy_enabled else None
     client = TelegramClient(
         session, settings.api_id, settings.api_hash, proxy=proxy
     )
