@@ -4,6 +4,7 @@ from __future__ import annotations
 import typer
 
 from selfbot import __version__ as pkg_version
+from selfbot.commands.proxy import proxy_app
 
 app = typer.Typer(
     name="selfbot",
@@ -11,6 +12,7 @@ app = typer.Typer(
     invoke_without_command=True,
     no_args_is_help=False,
 )
+app.add_typer(proxy_app, name="proxy")
 
 
 @app.callback()
