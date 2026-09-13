@@ -214,12 +214,19 @@ async def _resolve_chat_id(ctx: CommandContext, text: str) -> int:
 # Incoming auto-reply engine
 # ---------------------------------------------------------------------------
 async def _sender_is_allowed(services: Any, sender_id: int | None, chat_id: int) -> bool:
-    """Return True only for the owner or a chat the owner explicitly allowed."""
+    """Return True when the sender is the owner or the chat is on the allowlist.
+
+    Auto-reply keyword rules fire in private chats by default; turning
+    ``@allowlist on`` narrows replies down to explicitly allowed chats only.
+    """
     if sender_id is None:
         return False
     if services.permission.is_owner(sender_id):
         return True
     async with services.database.session_ctx() as session:
+        allowlist = await ConfigRepository(session).get_bool("allowlist_enabled", False)
+        if not allowlist:
+            return True
         return await ChatPermissionRepository(session).is_allowed(chat_id)
 
 

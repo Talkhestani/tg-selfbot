@@ -140,13 +140,9 @@ class _FakeMessage:
 
 async def test_repeats_keyword_replies_every_time(database: Database, settings: Settings) -> None:
     """A second 'سلام' in a private chat must be answered even when the rule
-    response equals the keyword (regression: the old echo guard suppressed it).
-
-    The chat is explicitly allowed by the owner, so the stranger is answered.
-    """
+    response equals the keyword (regression: the old echo guard suppressed it)."""
     async with database.session_ctx() as session:
         await ConfigRepository(session).set_bool("autoreply_enabled", True)
-        await ChatPermissionRepository(session).set_action(555, "allow")
         await AutoReplyRepository(session).add(
             AutoReplyRule(pattern="سلام", response="سلام", match_type="contains")
         )
@@ -165,10 +161,14 @@ async def test_repeats_keyword_replies_every_time(database: Database, settings: 
     assert second.replies == ["سلام"]
 
 
-async def test_no_reply_to_stranger_pm(database: Database, settings: Settings) -> None:
-    """A private chat that was not explicitly allowed gets no auto-reply."""
+async def test_no_reply_in_allowlist_mode_when_chat_not_allowed(
+    database: Database, settings: Settings
+) -> None:
+    """With ``@allowlist on`` a private chat that was not explicitly allowed
+    gets no auto-reply."""
     async with database.session_ctx() as session:
         await ConfigRepository(session).set_bool("autoreply_enabled", True)
+        await ConfigRepository(session).set_bool("allowlist_enabled", True)
         await AutoReplyRepository(session).add(
             AutoReplyRule(pattern="سلام", response="سلام", match_type="contains")
         )
@@ -182,6 +182,29 @@ async def test_no_reply_to_stranger_pm(database: Database, settings: Settings) -
     await handle_incoming_auto_reply(message, services, autoreply)
 
     assert message.replies == []
+
+
+async def test_reply_when_allowlist_mode_and_chat_allowed(
+    database: Database, settings: Settings
+) -> None:
+    """With ``@allowlist on`` an explicitly allowed chat is answered."""
+    async with database.session_ctx() as session:
+        await ConfigRepository(session).set_bool("autoreply_enabled", True)
+        await ConfigRepository(session).set_bool("allowlist_enabled", True)
+        await ChatPermissionRepository(session).set_action(555, "allow")
+        await AutoReplyRepository(session).add(
+            AutoReplyRule(pattern="سلام", response="سلام", match_type="contains")
+        )
+    services = SimpleNamespace(
+        permission=PermissionService(settings, database),
+        database=database,
+    )
+    autoreply = AutoReplyService()
+
+    message = _FakeMessage("سلام")
+    await handle_incoming_auto_reply(message, services, autoreply)
+
+    assert message.replies == ["سلام"]
 
 
 def test_validate_rule() -> None:
