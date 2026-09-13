@@ -67,6 +67,13 @@ class Settings(BaseSettings):
     profile_update_interval: int = 60
     bio_clock_interval: int = 300
 
+    @field_validator("owner_id", mode="before")
+    @classmethod
+    def empty_owner(cls, v):
+        if v == "" or v is None:
+            return None
+        return int(v)
+
     @field_validator("api_id")
     @classmethod
     def validate_api_id(cls, value: int | None) -> int | None:
