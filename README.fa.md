@@ -1,4 +1,4 @@
-# <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F916_1.webp" width="28" style="vertical-align:middle;"> ربات خود تلگرام (Telegram Self-Bot)
+# <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F916_1.webp" width="28" style="vertical-align: middle;"> ربات خود تلگرام (Telegram Self-Bot)
 
 > <a href="README.md">English</a> | فارسی
 
@@ -7,7 +7,7 @@
 
 ساخته شده با Python 3.12+، Telethon، SQLAlchemy 2.x (async) روی SQLite، APScheduler، yt-dlp، httpx و pydantic.
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+2728_1.webp" width="24" style="vertical-align:middle;"> ویژگی‌ها
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B2728_1.webp" width="24" style="vertical-align: middle;"> ویژگی‌ها
 
 - **مدیریت پیام‌ها** — حذف پیام‌های قدیمی (بر اساس سن یا تعداد) و حذف پیام‌ها بر اساس کلمه کلیدی/regex با تقسیم ایمن و مدیریت FloodWait.
 - **پاسخ خودکار** — فعال‌سازی/غیرفعال‌سازی، پاسخ پیش‌فرض ایستا و قوانین کلمه کلیدی با اولویت، خنک‌کننده، regex، تطبیق دقیق/شامل، خنک‌کننده برای هر کاربر و فیلترهای چت مجاز/مسدود.
@@ -21,12 +21,12 @@
 - **خودکارسازی پروفایل** — تنظیم بیو، بیو خودکار، بیوهای مبتنی بر زمان، بیو زمان فعلی (ساعت)، بیو وضعیت آنلاین، چرخش تصادفی بیو، تولید نام کاربری، تولید عکس پروفایل با هوش مصنوعی و پشتیبان‌گیری/بازیابی پروفایل با تأیید.
 - **مجوزها و امنیت** — دستورات فقط برای مالک، لیست‌های چت مجاز/مسدود، مجوزهای هر دستور، تأیید برای اقدامات مخرب، محدودیت نرخ و لاگ امن بدون افشای رازها.
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4A1_1.webp" width="24" style="vertical-align:middle;"> نیازمندی‌ها
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F4A1_1.webp" width="24" style="vertical-align: middle;"> نیازمندی‌ها
 
 - Python 3.12 یا جدیدتر (توسعه و آزمایش روی 3.14)
 - یک حساب کاربری تلگرام با `api_id` / `api_hash` از [my.telegram.org](https://my.telegram.org)
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4BB_1.webp" width="24" style="vertical-align:middle;"> نصب
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F4BB_1.webp" width="24" style="vertical-align: middle;"> نصب
 
 ```powershell
 # ۱) ایجاد و فعال‌سازی محیط مجازی
@@ -43,7 +43,7 @@ Copy-Item .env.example .env
 
 در اولین ورود، ربات شماره تلفن شما و کد تأیید را می‌خواهد. یک فایل نشست تلگرام (نه رمز عبور) به‌صورت محلی ذخیره می‌شود تا وارد بمانید.
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+2699_1.webp" width="24" style="vertical-align:middle;"> پیکربندی
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B2699_1.webp" width="24" style="vertical-align: middle;"> پیکربندی
 
 `.env.example` را به `.env` کپی کنید و حداقل این موارد را تنظیم کنید:
 
@@ -76,7 +76,7 @@ OWNER_ID=your_numeric_user_id
 
 هرگز `.env` یا فایل‌های نشست را در مخزن ثبت نکنید.
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+26A1_1.webp" width="24" style="vertical-align:middle;"> اجرا
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B26A1_1.webp" width="24" style="vertical-align: middle;"> اجرا
 
 ```powershell
 python -m selfbot.app
@@ -84,7 +84,7 @@ python -m selfbot.app
 
 اگر اعتبارنامه‌ها وجود نداشته باشد، ربات با یک پیام خطای فارسی واضح خارج می‌شود.
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4AC_1.webp" width="24" style="vertical-align:middle;"> دستورات
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F4AC_1.webp" width="24" style="vertical-align: middle;"> دستورات
 
 دستورات را به پیام‌های خودتان (پیام‌های ذخیره‌شده) یا در چت‌هایی که ربات مجاز است ارسال کنید. همه پاسخ‌ها به فارسی هستند.
 
@@ -200,7 +200,7 @@ python -m selfbot.app
 | `/profile backup` | پشتیبان‌گیری نام/بیو/نام کاربری/عکس |
 | `/profile restore <backup_id>` | بازیابی پشتیبان (نیاز به تأیید) |
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4BB_1.webp" width="24" style="vertical-align:middle;"> توسعه
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F4BB_1.webp" width="24" style="vertical-align: middle;"> توسعه
 
 ```powershell
 # اجرای تست‌ها (۱۴۳ تست)
@@ -234,7 +234,7 @@ src/selfbot/
 └── messages/persian.py       # رشته‌های فارسی رو به کاربر
 ```
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F510_1.webp" width="24" style="vertical-align:middle;"> نکات امنیتی
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F510_1.webp" width="24" style="vertical-align: middle;"> نکات امنیتی
 
 - حفاظت SSRF مقصدهای حلقه بازگشتی/خصوصی/پیوند محلی/نات درجه حامل و ابرداده ابری را برای همه ابزارهای شبکه مسدود می‌کند.
 - ماشین‌حساب عبارات را به‌صورت امن تجزیه می‌کند و هرگز از `eval()` استفاده نمی‌کند.
@@ -242,6 +242,6 @@ src/selfbot/
 - اقدامات مخرب و تغییرات پروفایل به‌صورت پیش‌فرض نیاز به تأیید فارسی (`بله`/`خیر`) دارند.
 - محدودیت‌های اندازه دانلود، زمان پایان و نرخ اعمال می‌شوند.
 
-## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4C1_1.webp" width="24" style="vertical-align:middle;"> مجوز
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F4C1_1.webp" width="24" style="vertical-align: middle;"> مجوز
 
 مجوز MIT
