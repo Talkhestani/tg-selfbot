@@ -43,7 +43,7 @@ Copy-Item .env.example .env
 
 در اولین ورود، ربات شماره تلفن شما و کد تأیید را می‌خواهد. یک فایل نشست تلگرام (نه رمز عبور) به‌صورت محلی ذخیره می‌شود تا وارد بمانید.
 
-## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B2699_1.webp" width="24" style="vertical-align: middle;"> پیکربندی
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F9F0_1.webp" width="24" style="vertical-align: middle;"> پیکربندی
 
 `.env.example` را به `.env` کپی کنید و حداقل این موارد را تنظیم کنید:
 

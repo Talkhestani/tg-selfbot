@@ -47,7 +47,7 @@ Copy-Item .env.example .env
 On first login the bot asks for your phone number and a verification code.
 A Telegram session file (not a password) is stored locally so you stay logged in.
 
-## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B2699_1.webp" width="24" style="vertical-align: middle;"> Configuration
+## <img src="https://media.githubusercontent.com/media/saeedtahmtan/telemoji/refs/heads/main/webp/animated/U%2B1F9F0_1.webp" width="24" style="vertical-align: middle;"> Configuration
 
 Copy `.env.example` to `.env` and set at least:
 
