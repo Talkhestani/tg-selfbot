@@ -1,4 +1,7 @@
-# Telegram Self-Bot
+# <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F916_1.webp" width="28" style="vertical-align:middle;"> Telegram Self-Bot
+
+> English | <a href="README.fa.md">فارسی</a>
+
 
 A production-grade Telegram self-bot that runs on your own personal Telegram account.
 It provides message management, auto-reply, AI integration, reminders, network/utility
@@ -7,7 +10,7 @@ tools, converters, and full profile automation with a clean, testable architectu
 Built with Python 3.12+, Telethon, SQLAlchemy 2.x (async) over SQLite, APScheduler,
 yt-dlp, httpx, and pydantic.
 
-## Features
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+2728_1.webp" width="24" style="vertical-align:middle;"> Features
 
 - **Message management** — delete old messages (by age or count) and delete messages by keyword/regex with safe batching and FloodWait handling.
 - **Auto reply** — enable/disable, a static default response, and keyword rules with priority, cooldown, regex, exact/contains matching, per-user cooldown, and allowed/blocked chat filters.
@@ -21,12 +24,12 @@ yt-dlp, httpx, and pydantic.
 - **Profile automation** — set bio, auto bio, time-based bios, current-time bio (clock), online-status bio, random bio rotation, username generator, AI/profile-photo generation, and profile backup/restore with confirmation.
 - **Permissions & safety** — owner-only commands, allowed/blocked chat lists, per-command permissions, confirmation for destructive actions, rate limiting, and secret-safe logging.
 
-## Requirements
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4A1_1.webp" width="24" style="vertical-align:middle;"> Requirements
 
 - Python 3.12 or newer (developed and tested on 3.14)
 - A Telegram user account with `api_id` / `api_hash` from [my.telegram.org](https://my.telegram.org)
 
-## Installation
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4BB_1.webp" width="24" style="vertical-align:middle;"> Installation
 
 ```powershell
 # 1) Create and activate a virtual environment
@@ -44,7 +47,7 @@ Copy-Item .env.example .env
 On first login the bot asks for your phone number and a verification code.
 A Telegram session file (not a password) is stored locally so you stay logged in.
 
-## Configuration
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+2699_1.webp" width="24" style="vertical-align:middle;"> Configuration
 
 Copy `.env.example` to `.env` and set at least:
 
@@ -77,7 +80,7 @@ Important options:
 
 Never commit `.env` or session files.
 
-## Running
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+26A1_1.webp" width="24" style="vertical-align:middle;"> Running
 
 ```powershell
 python -m selfbot.app
@@ -85,7 +88,7 @@ python -m selfbot.app
 
 If credentials are missing the bot exits with a clear Persian error message.
 
-## Commands
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4AC_1.webp" width="24" style="vertical-align:middle;"> Commands
 
 Send commands to your own messages (Saved Messages) or in chats where the bot
 is permitted. All responses are in Persian.
@@ -202,7 +205,7 @@ All network commands run through SSRF protection and resolve destinations safely
 | `/profile backup` | Backup name/bio/username/photo |
 | `/profile restore <backup_id>` | Restore a backup (confirmation required) |
 
-## Development
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4BB_1.webp" width="24" style="vertical-align:middle;"> Development
 
 ```powershell
 # Run the tests (143 tests)
@@ -236,7 +239,7 @@ src/selfbot/
 └── messages/persian.py       # user-facing Persian strings
 ```
 
-## Security notes
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F510_1.webp" width="24" style="vertical-align:middle;"> Security notes
 
 - SSRF protection blocks loopback/private/link-local/carrier-grade NAT and cloud-metadata destinations for all network tools.
 - The calculator parses expressions safely and never uses `eval()`.
@@ -244,6 +247,6 @@ src/selfbot/
 - Destructive and profile-modifying actions require Persian confirmation (`بله`/`خیر`) by default.
 - Download size, timeout, and rate limits are enforced.
 
-## License
+## <img src="https://saeedtahmtan.github.io/telemoji/webp/animated/U+1F4C1_1.webp" width="24" style="vertical-align:middle;"> License
 
 MIT License
